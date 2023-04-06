@@ -2,17 +2,14 @@
 import Vimeo from "@vimeo/player"
 import "@vimeo/player/dist/player"
 
+const LOCALSTORAGE_VIDEO = 'videoplayer-current-time'
+
 const iframe = document.querySelector('iframe');
-const player = new Vimeo.Player(iframe);
-// const LOCALSTORAGE_VIDEO = 'videoplayer-current-time'
+const player = new Vimeo(iframe);
 
 
 player.on('play', function() {
     console.log('played the video!');
-});
-
-player.getVideoTitle().then(function(title) {
-    console.log('title:', title);
 });
 
 
@@ -30,6 +27,14 @@ player.on('timeupdate', function(data) {
 }
 );
 
+// const currentVideoTime = player.setCurrenrTime(currentTime)
+// console.log(currentVideoTime);
+
+const playertime = localStorage.setItem("time", data.seconds)
+
+console.log(playertime);
 // localStorage.setItem("videoplayer-current-time",JSON.stringify(videoplayer-current-time) )
 
 // const videoCurrentTime = localStorage.getItem("videoplayer-current-time")
+
+// const time ={
